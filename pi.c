@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 double CalcPi(int n);
@@ -44,16 +45,19 @@ int main(int argc, char **argv)
     }
     
     // get initial time 
+    fTimeStart = (double)clock() / CLOCKS_PER_SEC;
 
     /* the calculation is done here*/
     fPi = CalcPi(n);
 
     //get final fime
+    fTimeEnd = (double)clock() / CLOCKS_PER_SEC;
     
     printf("\npi is approximately = %.20f \nError               = %.20f\n",
            fPi, fabs(fPi - fPi25DT));
     
     // report time
+    printf("Execution time: %.6f seconds\n", fTimeEnd - fTimeStart);
 
     return 0;
 }
